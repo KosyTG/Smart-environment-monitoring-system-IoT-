@@ -167,10 +167,16 @@ app.get('/api/alerts', (req, res) => {
   }
 });
 
+// Health check
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok', uptime: process.uptime(), timestamp: new Date().toISOString() });
+});
+
 // Catch-all for unhandled routes
 app.use((req, res) => {
   res.status(404).json({ error: 'Endpoint not found' });
 });
+
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
