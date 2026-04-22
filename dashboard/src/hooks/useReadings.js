@@ -14,7 +14,8 @@ export function useReadings() {
         `${BASE_URL}/api/readings?limit=144&device_id=lagos-sensor-01&t=${Date.now()}`,
         { headers: { 'Cache-Control': 'no-cache' } }
       );
-      setReadings(res.data);
+      const sorted = res.data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+      setReadings(sorted);
       setError(null);
       setLastFetchTime(Date.now());
     } catch (err) {
