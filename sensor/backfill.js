@@ -3,8 +3,8 @@ dotenv.config();
 import axios from 'axios';
 import lagosWeekData from './seeds/lagosWeekData.js';
 
-const BASE_URL = process.env.BASE_URL || 'http://localhost:3000/api/readings';
-const BATCH_URL = BASE_URL.endsWith('/readings') ? BASE_URL + '/batch' : 'http://localhost:3000/api/readings/batch';
+const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
+const BATCH_URL = `${BASE_URL}/api/readings/batch`;
 const DEVICE_ID = process.env.DEVICE_ID || 'lagos-sensor-01';
 const LOCATION = 'Lagos, Nigeria';
 
