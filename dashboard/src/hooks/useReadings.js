@@ -10,7 +10,10 @@ export function useReadings() {
   const fetchReadings = useCallback(async () => {
     try {
       const BASE_URL = 'https://smart-environment-monitoring-system-iot-production.up.railway.app';
-      const res = await axios.get(`${BASE_URL}/api/readings?limit=144&device_id=lagos-sensor-01`);
+      const res = await axios.get(
+        `${BASE_URL}/api/readings?limit=144&device_id=lagos-sensor-01&t=${Date.now()}`,
+        { headers: { 'Cache-Control': 'no-cache' } }
+      );
       setReadings(res.data);
       setError(null);
       setLastFetchTime(Date.now());

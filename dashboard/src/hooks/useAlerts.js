@@ -10,7 +10,11 @@ export function useAlerts() {
   const fetchAlerts = useCallback(async () => {
     try {
       const BASE_URL = 'https://smart-environment-monitoring-system-iot-production.up.railway.app';
-      const res = await axios.get(`${BASE_URL}/api/alerts`);
+      const res = await axios.get(
+        `${BASE_URL}/api/alerts?t=${Date.now()}`,
+        { headers: { 'Cache-Control': 'no-cache' } }
+      );
+
       setAlerts(res.data);
       setError(null);
       setLastFetchTime(Date.now());
