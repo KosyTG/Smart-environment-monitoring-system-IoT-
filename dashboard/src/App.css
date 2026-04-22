@@ -182,3 +182,85 @@
     border-right-color: var(--border);
   }
 }
+
+/* Custom Dashboard Styles */
+.glass-panel {
+  background: #1a1a2e;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.metric-card-title {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.metric-card-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+}
+
+.metric-card-unit {
+  font-size: 1rem;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+.metric-value-cyan { color: #00f0ff; }
+.metric-value-magenta { color: #ff007f; }
+.metric-value-yellow { color: #ffcf00; }
+.metric-value-green { color: #00ff66; }
+.metric-value-red { color: #ff3333; }
+
+.status-banner {
+  background: rgba(255, 51, 51, 0.1);
+  border: 1px solid #ff3333;
+  border-left: 4px solid #ff3333;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.status-icon {
+  font-size: 1.5rem;
+}
+
+.alert-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0;
+  margin: 0;
+}
+
+.alert-item {
+  background: rgba(0,0,0,0.3);
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 3px solid #ffcf00;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.alert-item.critical {
+  border-left-color: #ff3333;
+}
+
+.alert-time {
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
