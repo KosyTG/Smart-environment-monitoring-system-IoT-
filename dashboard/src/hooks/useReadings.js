@@ -9,7 +9,8 @@ export function useReadings() {
 
   const fetchReadings = useCallback(async () => {
     try {
-      const res = await axios.get('http://localhost:3000/api/readings?limit=144&device_id=lagos-sensor-01');
+      const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+      const res = await axios.get(`${BASE_URL}/api/readings?limit=144&device_id=lagos-sensor-01`);
       setReadings(res.data);
       setError(null);
       setLastFetchTime(Date.now());
