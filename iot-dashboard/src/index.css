@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-dark: #0f111a;
+  --bg-panel: rgba(25, 28, 41, 0.6);
+  --bg-panel-hover: rgba(35, 39, 56, 0.8);
+  --border-color: rgba(255, 255, 255, 0.08);
+  --text-main: #f0f2f5;
+  --text-muted: #9ba1b0;
+  
+  --accent-cyan: #00f0ff;
+  --accent-magenta: #ff007f;
+  --accent-yellow: #ffcf00;
+  --accent-green: #00ff66;
+  --accent-red: #ff3333;
+  
+  --shadow-glow: 0 8px 32px 0 rgba(0, 240, 255, 0.1);
+  --shadow-drop: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-dark);
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(0, 240, 255, 0.05), transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(255, 0, 127, 0.05), transparent 25%);
+  color: var(--text-main);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Glassmorphism Panel */
+.glass-panel {
+  background: var(--bg-panel);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-drop);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.glass-panel:hover {
+  background: var(--bg-panel-hover);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+/* App Grid Layout */
+.dashboard-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.dashboard-header {
+  margin-bottom: 1rem;
+}
+
+.dashboard-header h1 {
+  font-weight: 700;
+  font-size: 2.2rem;
+  background: linear-gradient(90deg, var(--accent-cyan), var(--text-main));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.metrics-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.charts-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Micro-animations */
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 0 0 rgba(255, 51, 51, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(255, 51, 51, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 51, 51, 0); }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Status Banner */
+.status-banner {
+  background: linear-gradient(135deg, rgba(255, 51, 51, 0.2), rgba(255, 0, 127, 0.2));
+  border: 1px solid var(--accent-red);
+  border-left: 4px solid var(--accent-red);
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  animation: slideDown 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(10px);
+}
+
+.status-banner.safe {
+  background: linear-gradient(135deg, rgba(0, 255, 102, 0.1), transparent);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--accent-green);
+}
+
+.status-icon {
+  font-size: 1.5rem;
+  animation: pulseGlow 2s infinite;
+  border-radius: 50%;
+}
+
+.status-banner.safe .status-icon {
+  animation: none;
+}
+
+/* Metric Card specific */
+.metric-card-title {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.metric-card-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+}
+
+.metric-card-unit {
+  font-size: 1rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.metric-value-cyan { color: var(--accent-cyan); }
+.metric-value-magenta { color: var(--accent-magenta); }
+.metric-value-yellow { color: var(--accent-yellow); }
+.metric-value-green { color: var(--accent-green); }
+.metric-value-red { color: var(--accent-red); }
+
+/* Alert Feed specific */
+.alert-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.alert-item {
+  background: rgba(0,0,0,0.2);
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 3px solid var(--accent-yellow);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.alert-item.critical {
+  border-left-color: var(--accent-red);
+}
+
+.alert-time {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
