@@ -9,7 +9,7 @@ export function useAlerts() {
 
   const fetchAlerts = useCallback(async () => {
     try {
-      const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+      const BASE_URL = 'https://smart-environment-monitoring-system-iot-production.up.railway.app';
       const res = await axios.get(`${BASE_URL}/api/alerts`);
       setAlerts(res.data);
       setError(null);
